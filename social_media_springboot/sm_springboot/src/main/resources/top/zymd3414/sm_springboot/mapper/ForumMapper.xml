@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zymd3414.sm_springboot.mapper.ForumMapper">
+    <!--添加论坛数据-->
+    <insert id="addForum" useGeneratedKeys="true" keyProperty="forumId">
+        INSERT INTO forum (userId, forumTitle, forumText, forumFeature, forumContentUrl, createdTime)
+        VALUES (#{userId}, #{forumTitle}, #{forumText}, #{forumFeature}, #{forumContentUrl}, #{createdTime})
+    </insert>
+    <!--获取论坛数据-->
+    <select id="getForums">
+        SELECT userId, forumId, forumTitle, forumText, forumFeature, forumContentUrl, createdTime FROM forum ORDER BY createdTime DESC LIMIT #{start}, #{size}
+    </select>
+    <!--获取个性化论坛数据-->
+    <select id="getIndividuationForums">
+        SELECT userId, forumId, forumTitle, forumText, forumFeature, forumContentUrl, createdTime FROM forum
+        WHERE
+            forumFeature LIKE CONCAT('%', #{feature}, '%')
+            OR forumTitle LIKE CONCAT('%', #{feature}, '%')
+            OR forumText LIKE CONCAT('%', #{feature}, '%')
+        ORDER BY createdTime DESC
+        LIMIT #{start}, #{size}
+    </select>
+</mapper>

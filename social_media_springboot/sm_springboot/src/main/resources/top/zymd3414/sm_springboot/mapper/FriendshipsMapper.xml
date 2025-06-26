@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zymd3414.sm_springboot.mapper.FriendshipsMapper">
+    <!--判断是否为好友-->
+    <select id="isFriend" resultType="java.lang.String">
+        SELECT status FROM friendships WHERE requesterId = #{userId} AND addresseeId = #{friendId}
+    </select>
+    <!--通过id获取好友数据-->
+    <select id="getFriends" resultType="top.zymd3414.sm_springboot.pojo.Friendships">
+        SELECT friendshipId, requesterId, addresseeId, status, notReadMessages, createdTime, updatedTime FROM friendships WHERE requesterId = #{userId} AND status = 'accepted'
+    </select>
+    <!--通过id获取有我好友记录的好友数据-->
+    <select id="getFriends2" resultType="top.zymd3414.sm_springboot.pojo.Friendships">
+        SELECT friendshipId, requesterId, addresseeId, status, notReadMessages, createdTime, updatedTime FROM friendships WHERE addresseeId = #{userId} AND status = 'accepted'
+    </select>
+    <!--增加未读消息数-->
+    <update id="addNotReadMessage">
+        UPDATE friendships SET notReadMessages = notReadMessages + 1 WHERE requesterId = #{requesterId} AND addresseeId = #{addresseeId}
+    </update>
+    <!--重置未读消息数-->
+    <update id="resetNotReadMessage">
+        UPDATE friendships SET notReadMessages = 0 WHERE requesterId = #{requesterId} AND addresseeId = #{addresseeId}
+    </update>
+</mapper>

@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+body {
+  background-color: #5d00ff32;
+}
+
+a {
+  text-decoration: none;
+  color: #34343480;
+}

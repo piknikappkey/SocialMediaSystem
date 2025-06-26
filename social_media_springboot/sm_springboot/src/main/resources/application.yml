@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: social_media_springboot
+  # url访问路径设置
+  mvc:
+    static-path-pattern: /**
+  web:
+    resources:
+      static-locations:
+        - "file:E:/社交媒体数据存储"
+
+#  文件上传相关配置
+  servlet:
+    multipart:
+      enabled: true
+      resolve-lazily: true # 延迟解析
+      location: /tmp # 确保写入权限
+      max-file-size: 2048MB
+      max-request-size: 2048MB
+
+  # 邮箱相关配置
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: 2803796204@qq.com
+    password: xekifewyypstdchj
+    protocol: smtp
+    properties.mail.smtp.ssl.enable: true
+
+# 数据库链接信息
+  datasource:
+    url: jdbc:mysql://localhost:3306/social_media_java
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 000000
+# Mybatis相关配置
+#mybatis:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 服务器设置
+server:
+  port: 8080
+  address: 0.0.0.0

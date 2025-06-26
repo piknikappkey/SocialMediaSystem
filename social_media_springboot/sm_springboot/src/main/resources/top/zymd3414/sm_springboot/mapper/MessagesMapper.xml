@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zymd3414.sm_springboot.mapper.MessagesMapper">
+    <!--获取历史消息数据-->
+    <select id="getMessages" resultType="top.zymd3414.sm_springboot.pojo.Messages">
+        SELECT messageId,
+               senderId,
+               receiverId,
+               content,
+               messageType,
+               isRead,
+               createdTime,
+               deletedTime
+        FROM messages
+        WHERE ((senderId = #{senderId} AND receiverId = #{receiverId}) OR
+               (senderId = #{receiverId} AND receiverId = #{senderId}))
+          AND deletedTime IS NULL
+        ORDER BY createdTime DESC
+        LIMIT #{start}, #{size};
+    </select>
+    <!--设置消息已读-->
+    <update id="updateIsRead">
+        UPDATE messages
+        SET isRead = CASE
+        <foreach collection="list" item="item">
+            WHEN messageId = #{item.messageId} THEN 1
+        </foreach>
+        ELSE isRead
+        END
+        WHERE messageId IN (
+        <foreach collection="list" item="item" separator=",">
+            #{item.messageId}
+        </foreach>
+        ) AND isRead = 0 AND senderId = #{receiverId} AND receiverId = #{senderId}
+    </update>
+    <!--添加消息数据-->
+    <insert id="addMessages" useGeneratedKeys="true" keyProperty="messageId">
+        INSERT INTO messages (senderId, receiverId, content, messageType, isRead, createdTime)
+        VALUES (#{senderId}, #{receiverId}, #{content}, #{messageType}, #{isRead}, #{createdTime})
+    </insert>
+</mapper>

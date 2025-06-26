@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zymd3414.sm_springboot.mapper.CookieMapper">
+    <!--通过cookie表获取用户id-->
+    <select id="getUserId" resultType="java.lang.Integer">
+        SELECT userId FROM cookie WHERE cookie = #{cookie}
+    </select>
+    <!--通过cookie删除行-->
+    <delete id="delByCookie">
+        DELETE FROM cookie WHERE cookie = #{cookie}
+    </delete>
+    <!--通过id删除行-->
+    <delete id="delById">
+        DELETE FROM cookie WHERE userId = #{id}
+    </delete>
+    <!--增加行-->
+    <insert id="addCookie">
+        INSERT INTO cookie (userId, cookie, createdTime) VALUES (#{id}, #{cookie}, #{createdTime})
+    </insert>
+    <!--更新日期-->
+    <select id="update">
+        UPDATE cookie SET createdTime = #{createdTime} WHERE cookie = #{cookie}
+    </select>
+</mapper>

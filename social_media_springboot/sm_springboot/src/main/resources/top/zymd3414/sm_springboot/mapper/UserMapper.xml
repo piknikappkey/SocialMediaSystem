@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zymd3414.sm_springboot.mapper.UserMapper">
+    <!--获取用户数据-->
+    <select id="getUserData" resultType="top.zymd3414.sm_springboot.pojo.User">
+        SELECT userId, username, email, avatarUrl, createdTime FROM user WHERE userId = #{userId}
+    </select>
+    <!--获取用户名-->
+    <select id="getUserName" resultType="java.lang.String">
+        SELECT username FROM user WHERE userId = #{userId}
+    </select>
+    <!--获取用户头像地址-->
+    <select id="getAvatarUrl" resultType="java.lang.String">
+        SELECT avatarUrl FROM user WHERE userId = #{userId}
+    </select>
+    <!--通过email获取用户密码-->
+    <select id="getUserPassword" resultType="java.lang.String">
+        SELECT password FROM user WHERE email = #{email}
+    </select>
+    <!--通过email获取用户id-->
+    <select id="getUserId" resultType="java.lang.Integer">
+        SELECT userId FROM user WHERE email = #{email}
+    </select>
+    <!--添加用户数据-->
+    <insert id="addUser"  useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO user (username, email, password, avatarUrl, createdTime)
+        VALUES (#{username}, #{email}, #{password}, #{avatarUrl}, #{createdTime})
+    </insert>
+    <!--更新用户密码-->
+    <update id="updatePassword">
+        UPDATE user SET password = #{password} WHERE userId = #{userId}
+    </update>
+    <!--搜索用户-->
+    <select id="searchUser" resultType="top.zymd3414.sm_springboot.pojo.User">
+        SELECT
+            userId,
+            username,
+            email,
+            avatarUrl,
+            createdTime
+        FROM
+            user
+        WHERE
+            username LIKE #{searchValue}
+           OR email LIKE #{searchValue}
+        LIMIT #{start}, #{size};
+    </select>
+</mapper>

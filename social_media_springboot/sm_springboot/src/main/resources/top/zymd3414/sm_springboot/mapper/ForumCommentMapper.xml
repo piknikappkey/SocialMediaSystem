@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zymd3414.sm_springboot.mapper.ForumCommentMapper">
+    <!--记录父评论的子评论数-->
+    <update id="setCommentHaveChild">
+        UPDATE forum_comment SET haveChild = ( haveChild + 1 ) WHERE commentId = #{commentId}
+    </update>
+    <!--获取父评论数据-->
+    <select id="getComments" resultType="top.zymd3414.sm_springboot.pojo.ForumComment">
+        SELECT commentId, forumId, fatherId, haveChild, userId, toUserId, likeNum, comment, comImgUrl, createdTime FROM forum_comment WHERE fatherId is NULL and forumId = #{forumId} ORDER BY createdTime DESC LIMIT #{start}, #{size}
+    </select>
+    <!--获取子评论数据-->
+    <select id="getChildComments" resultType="top.zymd3414.sm_springboot.pojo.ForumComment">
+        SELECT commentId, forumId, fatherId, haveChild, userId, toUserId, likeNum, comment, comImgUrl, createdTime FROM forum_comment WHERE forumId = #{forumId} and fatherId = #{fatherCommentId} ORDER BY createdTime DESC LIMIT #{start}, #{size}
+    </select>
+    <!--添加评论-->
+    <insert id="addComment"  useGeneratedKeys="true" keyProperty="commentId">
+        INSERT INTO forum_comment (forumId, fatherId, haveChild, userId, toUserId, likeNum, comment, comImgUrl, createdTime)
+        VALUES (#{forumId}, #{fatherId}, #{haveChild}, #{userId}, #{toUserId}, #{likeNum}, #{comment}, #{comImgUrl}, #{createdTime})
+    </insert>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zymd3414.sm_springboot.mapper.CodeMapper">
+    <!--通过email查找-->
+    <select id="getUserCode" resultType="top.zymd3414.sm_springboot.pojo.UserCode">
+        SELECT * FROM code WHERE email = #{email}
+    </select>
+    <!--写入验证码-->
+    <insert id="addCode">
+        INSERT INTO code (email, code, createdTime) VALUE (#{email}, #{code}, #{createdTime})
+    </insert>
+    <!--更新验证码-->
+    <update id="updateCode">
+        UPDATE code SET code = #{code}, createdTime = #{createdTime} WHERE email = #{email}
+    </update>
+</mapper>
