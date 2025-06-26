@@ -1,3 +1,4 @@
+
 # 社交媒体系统-基于vue3-springboot-mybatis-mysql
 
 #### 介绍
@@ -12,7 +13,7 @@
 
 #### 安装教程
 
-1.  使用vscode打开social_media_vue文件，在控制台输入npm install
+1.  使用vscode打开social_media_vue文件，在控制台输入npm install，其中src中有个requests.ts文件的baseUrl是用于连接后端的，要修改
 2.  使用IDEA打开social_media_springboot，下载对应jar包，本系统使用springboot版本为3.0.4，java版本为java21
 3.  按照1、2步骤配置好环境后，vue使用npm run dev运行，springboot运行SmSpringbootApplication.java文件，能不能跑就听天由命吧🙏
 
@@ -21,3 +22,16 @@
 1.  “社交媒体系统原型.rp”文件为本小组制作的系统原型
 2.  其余文件为本小组制作的成品，其中“social_media_vue”和“social_media_springboot”为源代码
 3.  “数据库表格数据”文件夹中存储的是成品系统使用的数据库数据
+
+#### 一些成品图片
+
+1.  首页
+![输入图片说明](%E6%88%90%E5%93%81%E5%9B%BE%E7%89%87/image.png)
+2.  首页动态详情
+![输入图片说明](%E6%88%90%E5%93%81%E5%9B%BE%E7%89%87/image.png)
+3.  分享
+![输入图片说明](%E6%88%90%E5%93%81%E5%9B%BE%E7%89%87/image.png)
+4.  消息
+![输入图片说明](%E6%88%90%E5%93%81%E5%9B%BE%E7%89%87/image.png)
+5.  登录
+![输入图片说明](%E6%88%90%E5%93%81%E5%9B%BE%E7%89%87/image.png)
