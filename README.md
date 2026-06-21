@@ -62,8 +62,8 @@
 │       └── src/main/
 │           ├── java/.../          # controller / service / mapper / pojo
 │           └── resources/         # application.yml
-├── 数据库表格数据/                 # 各表示例数据（.xlsx）
 ├── screenshots/                   # 系统成品截图
+├── 数据库er图                     # 数据库er图
 ├── 社交媒体系统原型.rp            # Axure 原型文件
 └── README.md
 ```
@@ -82,7 +82,7 @@
 ### 1. 准备数据库
 
 1. 在 MySQL 中创建数据库 `social_media_java`（建议字符集 `utf8mb4`）
-2. 参照 `数据库表格数据/` 下各 `.xlsx` 建立对应表结构并导入数据
+2. 参照 `数据库er图` 搭建数据库
 
 ### 2. 启动后端
 
