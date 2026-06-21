@@ -124,7 +124,6 @@ npm run dev
 ## 其他说明
 
 - `社交媒体系统原型.rp` 需使用 [Axure](https://www.axure.com/) 打开查看
-- `数据库表格数据/` 为示例数据，需手动建表导入
 
 ## License
 
