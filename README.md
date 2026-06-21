@@ -14,8 +14,6 @@
 
 一套前后端分离的社交媒体平台，采用模块化架构，提供完整的用户、内容、社交与即时消息能力。前端基于 Vue 3 构建 SPA，后端基于 Spring Boot 提供 RESTful API 并通过 WebSocket 实现实时通信。
 
-> 本仓库仅包含系统源码、原型设计及数据库示例数据，图片、视频等媒体资源不在仓库范围内。
-
 ## 功能特性
 
 | 模块 | 能力 |
@@ -64,8 +62,8 @@
 │       └── src/main/
 │           ├── java/.../          # controller / service / mapper / pojo
 │           └── resources/         # application.yml
-├── 数据库表格数据/                 # 各表示例数据（.xlsx）
 ├── screenshots/                   # 系统成品截图
+├── 数据库er图                     # 数据库er图
 ├── 社交媒体系统原型.rp            # Axure 原型文件
 └── README.md
 ```
@@ -84,7 +82,7 @@
 ### 1. 准备数据库
 
 1. 在 MySQL 中创建数据库 `social_media_java`（建议字符集 `utf8mb4`）
-2. 参照 `数据库表格数据/` 下各 `.xlsx` 建立对应表结构并导入数据
+2. 参照 `数据库er图` 搭建数据库
 
 ### 2. 启动后端
 
@@ -126,7 +124,6 @@ npm run dev
 ## 其他说明
 
 - `社交媒体系统原型.rp` 需使用 [Axure](https://www.axure.com/) 打开查看
-- `数据库表格数据/` 为示例数据，需手动建表导入
 
 ## License
 
