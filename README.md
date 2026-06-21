@@ -82,7 +82,7 @@
 ### 1. 准备数据库
 
 1. 在 MySQL 中创建数据库 `social_media_java`（建议字符集 `utf8mb4`）
-2. 参照 `数据库er图` 搭建数据库
+2. 参照 `social_media_java.uml` 或`social_media_java.png` 搭建数据库
 
 ### 2. 启动后端
 
