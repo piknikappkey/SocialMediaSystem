@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { useChatStore } from '@/store/chatData'
 import { storeToRefs } from 'pinia'
 
-const baseUrl = 'http://10.80.13.39:8080'
+const baseUrl = 'http://YOUR_BACKEND_IP:8080'
 const wsUrl = 'ws://' + baseUrl.split('//')[1]
 
 const service = axios.create({

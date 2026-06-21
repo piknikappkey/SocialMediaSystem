@@ -22,8 +22,8 @@ spring:
   mail:
     host: smtp.qq.com
     port: 465
-    username: 2803796204@qq.com
-    password: xekifewyypstdchj
+    username: YOUR_EMAIL
+    password: YOUR_DB_PASSWORD
     protocol: smtp
     properties.mail.smtp.ssl.enable: true
 
@@ -31,8 +31,8 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/social_media_java
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: 000000
+    username: YOUR_USERNAME
+    password: YOUR_DB_PASSWORD
 # Mybatis相关配置
 #mybatis:
 #  configuration:
